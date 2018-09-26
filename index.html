@@ -5,11 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" media="screen" href="src/assets/main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <title>RPS-js</title>
 </head>
 
 <body>
+  <section class="container">
+    <h1>Rock Paper Scissor</h1>
+    <div>
+      <form>
+        <input type="text" name="name" placeholder="Enter your name">
+      </form>
+      <button>Begin</button>
+    </div>
+    <div class="opponent-select">
+      <div class="opponent-choice">Opponent choice here</div>
+    </div>
+    <div class="wrapper player-select">
+        <i class="far fa-hand-rock" id="rock" style="font-size:68px;color:black"></i>
+        <i class="far fa-hand-paper" id="hand" style="font-size:68px;color:black"></i>
+        <i class="far fa-hand-scissors" id="paper" style="font-size:68px;color:black"></i>
+    </div>
+  </section>
   <script src="./dist/bundle.js"></script>
 </body>
 
 </html>
+

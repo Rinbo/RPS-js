@@ -1,7 +1,7 @@
 const { Given, Then } = require("cucumber");
 
 Given("I visit the site") do
-  pending 
+  return await this.openHomePage();
 end
 
 When("I click the {string} button") do |string|

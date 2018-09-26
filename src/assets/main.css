@@ -1,0 +1,39 @@
+h1 {
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  grid-gap: 40px;
+  padding: 20px;
+}
+
+.opponent-choice {
+  margin: 30px auto;
+  padding: 20px;
+  width: 100px;
+  height: 100px;
+  border: solid black;
+  text-align: center;
+}
+
+input {
+  font-size: 20px;
+  display: block;
+  margin: 15px auto;
+  padding: 5px;
+}
+
+button {  
+  font-size: 20px;
+  display: block;
+  margin: 15px auto;
+}
+
+.container {
+  margin: 50px auto;
+  max-width: 800px;
+  border: solid black;
+}

@@ -29,11 +29,34 @@ input {
 button {  
   font-size: 20px;
   display: block;
-  margin: 15px auto;
+  margin: 15px auto;  
 }
 
 .container {
   margin: 50px auto;
   max-width: 800px;
   border: solid black;
+}
+
+#score-board {
+  width: 100%;  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  flex-wrap:wrap
+}
+
+.col-left {
+  padding-left: 20px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  width: 35%;
+}
+
+.col-right {
+  padding-right: 20px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  width: 35%;
+  text-align: right;  
 }

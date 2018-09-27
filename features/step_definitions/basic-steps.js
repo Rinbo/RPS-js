@@ -1,17 +1,21 @@
-const { Given, Then } = require("cucumber");
+const { Given, Then, When, After } = require("cucumber");
 
-Given("I visit the site") do
+Given("I visit the site", async function() {
   return await this.openHomePage();
-end
+});
 
-When("I click the {string} button") do |string|
-  pending
-end
+Then("I should see {string}", async function(content) {
+  return await this.pageHasTextContent(content)
+});
 
-When("I fill in {string} in the {string} field") do |string, string2|
-  pending 
-end
+When('I click {string}', async function(string) {
+  return await this.clickOnButton(string)
+})
 
-Then("I should see {string}") do |string|
-  pending 
-end
+Then('I fill in {string} with {string}', async function(field, content) {
+  return await this.fillFormField(field.toLowerCase(), content)
+})
+
+After(async function(){
+  return await this.closeHomePage()
+});

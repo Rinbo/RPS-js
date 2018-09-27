@@ -15,17 +15,24 @@
     <h1>Rock Paper Scissor</h1>
     <div>
       <form>
-        <input type="text" name="name" placeholder="Enter your name">
+        <input id="game-name" type="text" name="name" placeholder="Enter your name">
       </form>
-      <button>Begin</button>
+      <button id="begin">Begin</button>
     </div>
+    <div id="score-board">
+      <div id="player-score-label" class="col-left">Player Score</div>
+      <div id="opponent-score-label" class="col-right">Opponent Score</div>
+      <div id="player-score" class="col-left">0</div>
+      <div id="opponent-score" class="col-right">0</div>
+    </div>
+    
     <div class="opponent-select">
       <div class="opponent-choice">Opponent choice here</div>
     </div>
     <div class="wrapper player-select">
         <i class="far fa-hand-rock" id="rock" style="font-size:68px;color:black"></i>
-        <i class="far fa-hand-paper" id="hand" style="font-size:68px;color:black"></i>
-        <i class="far fa-hand-scissors" id="paper" style="font-size:68px;color:black"></i>
+        <i class="far fa-hand-paper" id="paper" style="font-size:68px;color:black"></i>
+        <i class="far fa-hand-scissors" id="scissor" style="font-size:68px;color:black"></i>
     </div>
   </section>
   <script src="./dist/bundle.js"></script>

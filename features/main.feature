@@ -6,8 +6,8 @@ Feature: Create contacts
 
   Scenario: Start game
     Given I visit the site
-    When I click the "Begin" button
-    And I fill in "Robin Börjesson" in the "Name" field
+    When I fill in "name" with "Robin"
+    And I click "begin"    
     Then I should see "Rock"
-    And I should see "Siccor"
+    And I should see "Scissor"
     And I should see "Paper"

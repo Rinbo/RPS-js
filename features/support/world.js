@@ -33,21 +33,6 @@ class RPSWorld {
       this.inputElement = await this.page.$(inputSelector)
       await this.inputElement.type(content)          
   }
-
-  btnSelectorFromName(btnName) {
-      switch (btnName) {
-        case 'add contact':
-          return '.add-contact'
-          break
-        case 'save contact':
-          return '.save-contact'
-          break
-        default:
-          throw `${btnName} button is not defined`
-          break
-      }
-  }
-
 }
 
 setWorldConstructor(RPSWorld);

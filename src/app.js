@@ -18,33 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   global.rock.addEventListener('click', event => {
     let opponentChoice = getOpponentChoice();
-    let result = global.resultMatrix[opponentChoice][0]
-    if (result === "win") {
-      playerScore += 1;
-      global.playerScore.innerText = playerScore;
-    } else if (result === "lose") {
-      opponentScore += 1;
-      global.opponentScore.innerText = opponentScore;
-    }
-    setTimeout(clearOpView, 1000);    
+    result = getResult(0, opponentChoice);      
   });
 
   global.paper.addEventListener('click', event => {
     let opponentChoice = getOpponentChoice();
-    let result = global.resultMatrix[opponentChoice][1]
-    if (result === "win") {
-      playerScore += 1;
-      global.playerScore.innerText = playerScore;
-    } else if (result === "lose") {
-      opponentScore += 1;
-      global.opponentScore.innerText = opponentScore;
-    }
-    setTimeout(clearOpView, 1000);    
+    result = getResult(1, opponentChoice);     
   });
 
   global.scissor.addEventListener('click', event => {
     let opponentChoice = getOpponentChoice();
-    let result = global.resultMatrix[opponentChoice][2]
+    result = getResult(2, opponentChoice);     
+  });
+
+  function getResult(playerChoice, opponentChoice) {
+    let result = global.resultMatrix[opponentChoice][playerChoice];
     if (result === "win") {
       playerScore += 1;
       global.playerScore.innerText = playerScore;
@@ -52,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
       opponentScore += 1;
       global.opponentScore.innerText = opponentScore;
     }
-    setTimeout(clearOpView, 1000);    
-  });
+    setTimeout(clearOpView, 1000); 
+  }
 
   function clearOpView() {
     global.opponentChoice.classList = "";

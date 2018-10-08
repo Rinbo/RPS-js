@@ -1,1 +1,101 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";var o={};o.beginButton=document.getElementById("begin"),o.rock=document.getElementById("rock"),o.paper=document.getElementById("paper"),o.scissor=document.getElementById("scissor"),o.opponentChoice=document.getElementById("opponent-choice"),o.playerScore=document.getElementById("player-score"),o.opponentScore=document.getElementById("opponent-score");var r="tie",c="win",i="lose";o.resultMatrix=[[r,c,i],[i,r,c],[c,i,r]];var a=0,u=0;document.addEventListener("DOMContentLoaded",function(){function e(e,n){var r=o.resultMatrix[n][e];"win"===r?(a+=1,o.playerScore.innerText=a):"lose"===r&&(u+=1,o.opponentScore.innerText=u),setTimeout(t,1e3)}function t(){o.opponentChoice.classList=""}function n(){var e=Math.floor(3*Math.random());return o.opponentChoice.innerHtml="",o.opponentChoice.classList.add("far"),0===e?o.opponentChoice.classList.add("fa-hand-rock"):1===e?o.opponentChoice.classList.add("fa-hand-paper"):o.opponentChoice.classList.add("fa-hand-scissors"),e}o.rock.addEventListener("click",function(t){var o=n();result=e(0,o)}),o.paper.addEventListener("click",function(t){var o=n();result=e(1,o)}),o.scissor.addEventListener("click",function(t){var o=n();result=e(2,o)})})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar global = {};\nglobal.beginButton = document.getElementById('begin');\nglobal.inputField = document.getElementById('input-field');\nglobal.rock = document.getElementById('rock');\nglobal.paper = document.getElementById('paper');\nglobal.scissor = document.getElementById('scissor');\nglobal.opponentChoice = document.getElementById('opponent-choice');\nglobal.playerScore = document.getElementById('player-score');\nglobal.opponentScore = document.getElementById('opponent-score');\nglobal.gameBoard = document.getElementById('game-board');\nglobal.playerLabel = document.getElementById('player-score-label');\nglobal.roundCountLabel = document.getElementById('round-count');\nvar t = \"tie\";\nvar w = \"win\";\nvar l = \"lose\";\nglobal.resultMatrix = [[t, w, l], [l, t, w], [w, l, t]];\nvar playerScore = 0;\nvar opponentScore = 0;\nglobal.roundCount = 0;\n\ndocument.addEventListener('DOMContentLoaded', function () {\n\n  global.beginButton.addEventListener('click', function (event) {\n    if (global.inputField.value) {\n      global.playerLabel.innerText = global.inputField.value;\n    };\n    global.gameBoard.style.display = \"block\";\n    global.beginButton.style.display = \"none\";\n    global.inputField.style.display = \"none\";\n  });\n\n  global.roundCountLabel.addEventListener('onchange', function (e) {\n    if (global.roundCount === 10) {\n      endGame();\n    }\n  });\n\n  global.rock.addEventListener('click', function (event) {\n    var opponentChoice = getOpponentChoice();\n    result = getResult(0, opponentChoice);\n  });\n\n  global.paper.addEventListener('click', function (event) {\n    var opponentChoice = getOpponentChoice();\n    result = getResult(1, opponentChoice);\n  });\n\n  global.scissor.addEventListener('click', function (event) {\n    var opponentChoice = getOpponentChoice();\n    result = getResult(2, opponentChoice);\n  });\n\n  function getResult(playerChoice, opponentChoice) {\n    var result = global.resultMatrix[opponentChoice][playerChoice];\n    if (result === \"win\") {\n      playerScore += 1;\n      global.playerScore.innerText = playerScore;\n    } else if (result === \"lose\") {\n      opponentScore += 1;\n      global.opponentScore.innerText = opponentScore;\n    }\n    setTimeout(clearOpView, 1000);\n    global.roundCount += 1;\n    global.roundCountLabel.innerText = global.roundCount;\n    if (global.roundCount == 10) {\n      endGame();\n    };\n  }\n\n  function clearOpView() {\n    global.opponentChoice.classList = \"\";\n  }\n\n  function getOpponentChoice() {\n    var choice = Math.floor(Math.random() * 3);\n    global.opponentChoice.innerHtml = \"\";\n    global.opponentChoice.classList.add('far');\n    if (choice === 0) {\n      global.opponentChoice.classList.add('fa-hand-rock');\n    } else if (choice === 1) {\n      global.opponentChoice.classList.add('fa-hand-paper');\n    } else {\n      global.opponentChoice.classList.add('fa-hand-scissors');\n    }\n    return choice;\n  }\n\n  function endGame() {\n    alert(\"Game Ended!\");\n    global.roundCount = 0;\n    global.roundCountLabel.innerText = 0;\n  }\n});\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ })
+
+/******/ });

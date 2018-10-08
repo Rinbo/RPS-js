@@ -1,4 +1,4 @@
-Feature: Create contacts
+Feature: Start game
   As a user
   In order to have fun
   I would like to be able to play a game of RPS

@@ -1,5 +1,9 @@
 h1 {
   text-align: center;
+  font-size: 26px;
+}
+body {
+  font-family: monospace;
 }
 
 .wrapper {
@@ -16,6 +20,7 @@ h1 {
   width: 100px;
   height: 100px;
   border: solid black;
+  border-radius: 20px;
   text-align: center;
 }
 
@@ -36,6 +41,7 @@ button {
   margin: 50px auto;
   max-width: 800px;
   border: solid black;
+  border-radius: 25px;
 }
 
 #score-board {
@@ -43,20 +49,19 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between; 
-  flex-wrap:wrap
+  flex-wrap:wrap;
+  font-size: 20px;
 }
 
 .col-left {
   padding-left: 30px;
   padding-bottom: 15px;
-  font-size: 20px;
   width: 35%;
 }
 
 .col-right {
   padding-right: 30px;
   padding-bottom: 15px;
-  font-size: 20px;
   width: 35%;
   text-align: right;  
 }
@@ -70,4 +75,8 @@ button {
   color: red;
   text-align: center;
   line-height: 100px;
+}
+
+#game-board {
+  display: none;
 }

@@ -18,7 +18,7 @@ global.game = document.getElementById('game');
 global.resultText = document.getElementById('result-text');
 global.gameLogger = document.getElementById('game-logger');
 global.resultMatrix = [[t,w,l],[l,t,w],[w,l,t]];
-global.roundCount = 0;
+global.roundCount = 1;
 
 const t = "tie";
 const w = "win";
@@ -26,7 +26,7 @@ const l= "lose";
 let playerScore = 0;
 let opponentScore = 0;
 let numberOfRounds = 5;
-let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"]
+let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"];
 let gameNumber = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,17 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   global.rock.addEventListener('click', event => {
     let opponentChoice = getOpponentChoice();
-    result = getResult(0, opponentChoice);      
+    getResult(0, opponentChoice);      
   });
 
   global.paper.addEventListener('click', event => {
     let opponentChoice = getOpponentChoice();
-    result = getResult(1, opponentChoice);     
+    getResult(1, opponentChoice);     
   });
 
   global.scissor.addEventListener('click', event => {
     let opponentChoice = getOpponentChoice();
-    result = getResult(2, opponentChoice);     
+    getResult(2, opponentChoice);     
   });
 
   function getResult(playerChoice, opponentChoice) {    
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       global.opponentScore.innerText = opponentScore;
     }
     
-    setTimeout(clearOpView, 1600);     
+    setTimeout(clearOpView, 1400);     
   }
 
   function clearOpView() {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     global.game.style.display = "none";
     global.endGame.style.display= "block";
     global.resultText.innerText = winnerText;    
-    global.roundCount = 0;
+    global.roundCount = 1;
     global.roundCountLabel.innerText = 0;
     opponentScore = 0;
     playerScore = 0;
@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
       global.gameLogger.removeChild(global.gameLogger.firstChild);
     };
     global.gameLogger.style.display = "none";
-
   })
 
   function winner() {
@@ -137,14 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
     var end = start;
     while(end < start + ms) {
       end = new Date().getTime();
-   }
- }
+    }
+  }
 
   function addToGameLogger(message) {
-    global.gameLogger.style.dispaly = "block";
-    let div = global.gameLogger.appendChild('div');
-    div.innerText = `Game${gameNumber} - ${message}`;
-    ++gamenumber;
- }
-
+    global.gameLogger.style.display = "block";
+    let node = document.createElement("div");
+    global.gameLogger.appendChild(node);
+    node.innerText = `Game${gameNumber} - ${message}`;
+    gameNumber += 1;
+  }
 });

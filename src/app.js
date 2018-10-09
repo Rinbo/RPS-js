@@ -39,23 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
     global.inputField.style.display = "none";
   });
 
-  global.rock.addEventListener('click', event => {
-    stopSpam();
+  global.rock.addEventListener('click', clickRock);
+  global.paper.addEventListener('click', clickPaper);
+  global.scissor.addEventListener('click', clickScissor); 
+  
+  function clickRock() {
+    stopSpam(Date.now());
     let opponentChoice = getOpponentChoice();
     getResult(0, opponentChoice);      
-  });
-
-  global.paper.addEventListener('click', event => {
-    stopSpam();
+  };
+  function clickPaper() {
+    stopSpam(Date.now());
     let opponentChoice = getOpponentChoice();
-    getResult(1, opponentChoice);
-  });
-
-  global.scissor.addEventListener('click', event => {
-    stopSpam();
+    getResult(1, opponentChoice);      
+  };
+  function clickScissor() {
+    stopSpam(Date.now());
     let opponentChoice = getOpponentChoice();
-    getResult(2, opponentChoice);     
-  });
+    getResult(2, opponentChoice);      
+  };
 
   function getResult(playerChoice, opponentChoice) {
         
@@ -102,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     global.endGame.style.display= "block";
     global.resultText.innerText = winnerText;    
     global.roundCount = 1;
-    global.roundCountLabel.innerText = 0;
+    global.roundCountLabel.innerText = 1;
     opponentScore = 0;
     playerScore = 0;
     global.opponentScore.innerText = 0;
@@ -146,9 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function stopSpam() {
-    if (Date.now() < now + 1000) { wait(1000) };
-    now = Date.now();
+  function stopSpam(now) {
+    if (Date.now() < now + 1000) { 
+      global.rock.removeEventListener('click', clickRock);
+      global.paper.removeEventListener('click', clickPaper);
+      global.scissor.removeEventListener('click', clickScissor);
+     };
+     setTimeout(reAddHandlers, 1000);     
+  }
+  
+  function reAddHandlers() {
+    global.rock.addEventListener('click', clickRock);
+    global.paper.addEventListener('click', clickPaper);
+    global.scissor.addEventListener('click', clickScissor);
   }
 
   function addToGameLogger(message) {

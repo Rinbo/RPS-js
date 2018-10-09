@@ -1,4 +1,3 @@
-
 const global = {}
 global.beginButton = document.getElementById('begin');
 global.inputField = document.getElementById('input-field')
@@ -17,15 +16,18 @@ global.noButton = document.getElementById('no');
 global.endGame = document.getElementById('end-game');
 global.game = document.getElementById('game');
 global.resultText = document.getElementById('result-text');
+global.gameLogger = document.getElementById('game-logger');
+global.resultMatrix = [[t,w,l],[l,t,w],[w,l,t]];
+global.roundCount = 0;
+
 const t = "tie";
 const w = "win";
 const l= "lose";
-global.resultMatrix = [[t,w,l],[l,t,w],[w,l,t]];
 let playerScore = 0;
 let opponentScore = 0;
-global.roundCount = 0;
 let numberOfRounds = 5;
 let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"]
+let gameNumber = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
   
@@ -98,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     playerScore = 0;
     global.opponentScore.innerText = 0;
     global.playerScore.innerText = 0;
+    addToGameLogger(winnerText);
   }
 
   global.yesButton.addEventListener('click', () => {
@@ -111,14 +114,19 @@ document.addEventListener('DOMContentLoaded', () => {
     global.gameBoard.style.display = "none";
     global.beginButton.style.display = "block";
     global.inputField.style.display = "block";
+    gameNumber = 1;
+    while (global.gameLogger.firstChild) {
+      global.gameLogger.removeChild(global.gameLogger.firstChild);
+    };
+    global.gameLogger.style.display = "none";
 
   })
 
   function winner() {
     if (playerScore > opponentScore) {
-      return `${global.inputField.value} won!`
+      return `Winner: ${global.inputField.value}`
     } else if (opponentScore > playerScore) {
-      return `${global.opponentLabel.innerText} won :(.` 
+      return `Winner: ${global.opponentLabel.innerText}.` 
     } else {
       return "The game ended in a tie."
     }
@@ -130,6 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
     while(end < start + ms) {
       end = new Date().getTime();
    }
+ }
+
+  function addToGameLogger(message) {
+    global.gameLogger.style.dispaly = "block";
+    let div = global.gameLogger.appendChild('div');
+    div.innerText = `Game${gameNumber} - ${message}`;
+    ++gamenumber;
  }
 
 });

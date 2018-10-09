@@ -28,6 +28,7 @@ let opponentScore = 0;
 let numberOfRounds = 6;
 let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"];
 let gameNumber = 1;
+let now = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
   global.beginButton.addEventListener('click', event => {
@@ -39,16 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   global.rock.addEventListener('click', event => {
+    stopSpam();
     let opponentChoice = getOpponentChoice();
     getResult(0, opponentChoice);      
   });
 
   global.paper.addEventListener('click', event => {
+    stopSpam();
     let opponentChoice = getOpponentChoice();
-    getResult(1, opponentChoice);     
+    getResult(1, opponentChoice);
   });
 
   global.scissor.addEventListener('click', event => {
+    stopSpam();
     let opponentChoice = getOpponentChoice();
     getResult(2, opponentChoice);     
   });
@@ -140,6 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
     while(end < start + ms) {
       end = new Date().getTime();
     }
+  }
+
+  function stopSpam() {
+    if (Date.now() < now + 1000) { wait(1000) };
+    now = Date.now();
   }
 
   function addToGameLogger(message) {

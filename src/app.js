@@ -17,22 +17,21 @@ global.endGame = document.getElementById('end-game');
 global.game = document.getElementById('game');
 global.resultText = document.getElementById('result-text');
 global.gameLogger = document.getElementById('game-logger');
+const t = "tie";
+const w = "win";
+const l = "lose";
 global.resultMatrix = [[t,w,l],[l,t,w],[w,l,t]];
 global.roundCount = 1;
 
-const t = "tie";
-const w = "win";
-const l= "lose";
 let playerScore = 0;
 let opponentScore = 0;
-let numberOfRounds = 5;
+let numberOfRounds = 6;
 let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"];
 let gameNumber = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-  
   global.beginButton.addEventListener('click', event => {
-    if (global.inputField.value) {global.playerLabel.innerText = global.inputField.value};
+    if (global.inputField.value) { global.playerLabel.innerText = global.inputField.value };
     global.opponentLabel.innerText = opponents[Math.floor(Math.random() * 4)]
     global.gameBoard.style.display = "block";
     global.beginButton.style.display = "none";
@@ -54,14 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
     getResult(2, opponentChoice);     
   });
 
-  function getResult(playerChoice, opponentChoice) {    
+  function getResult(playerChoice, opponentChoice) {
+        
     let result = global.resultMatrix[opponentChoice][playerChoice];
     if (result === "win") {
+      
       playerScore += 1;
       global.playerScore.innerText = playerScore;
     } else if (result === "lose") {
       opponentScore += 1;
       global.opponentScore.innerText = opponentScore;
+    } else {
+
     }
     
     setTimeout(clearOpView, 1400);     
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function endGame() {
     let winnerText = winner();
-    wait(1000);
+    
     global.game.style.display = "none";
     global.endGame.style.display= "block";
     global.resultText.innerText = winnerText;    
@@ -123,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function winner() {
     if (playerScore > opponentScore) {
-      return `Winner: ${global.inputField.value}`
+      return `Winner: ${global.playerLabel.innerText}`
     } else if (opponentScore > playerScore) {
       return `Winner: ${global.opponentLabel.innerText}.` 
     } else {

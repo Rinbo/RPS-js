@@ -26,7 +26,7 @@ global.roundCount = 1;
 let playerScore = 0;
 let opponentScore = 0;
 let numberOfRounds = 6;
-let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"];
+let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur"];
 let gameNumber = 1;
 let now = 1;
 

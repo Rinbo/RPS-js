@@ -10,11 +10,6 @@ p{
   text-align: center;
 }
 
-ul {
-  margin-left: 25%;
-  margin-bottom: 35px;
-}
-
 button {
   background-color: #4CAF50; /* Green */
     border: none;
@@ -24,6 +19,11 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 26px;
+}
+
+.instructions {
+  max-width: 400px;
+  margin: 30px auto;    
 }
 
 .wrapper {

@@ -6,7 +6,8 @@ Click on one of the icons and see what the opponent chooses. Score is being upda
 
 #### Instructions:
 
-- Each game is best of 10 rounds
+- Each game is best of 5 rounds
 - An opponent is chosen at random
 - Click one of the three choices - rock, paper or scissor
 - The opponents choice will be displayed in the box
+- Upon game completion you will be asked if you want to play another game against the same opponent. Choosing 'yes' will start a new game and the result of the previous game will be appended to the bottom of the page. Choosing 'no' will reset the game and a new player will be able to enter their name and start a game.

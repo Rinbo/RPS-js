@@ -129,3 +129,9 @@ button {
 button:hover {
   opacity: 0.7;
 }
+
+#game-logger {
+  display: none;
+  max-width: 600px;
+  margin: 30px auto;
+}

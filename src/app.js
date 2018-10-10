@@ -1,4 +1,3 @@
-
 const global = {}
 global.beginButton = document.getElementById('begin');
 global.inputField = document.getElementById('input-field')
@@ -17,52 +16,64 @@ global.noButton = document.getElementById('no');
 global.endGame = document.getElementById('end-game');
 global.game = document.getElementById('game');
 global.resultText = document.getElementById('result-text');
+global.gameLogger = document.getElementById('game-logger');
 const t = "tie";
 const w = "win";
-const l= "lose";
+const l = "lose";
 global.resultMatrix = [[t,w,l],[l,t,w],[w,l,t]];
+global.roundCount = 1;
+
 let playerScore = 0;
 let opponentScore = 0;
-global.roundCount = 0;
-let numberOfRounds = 5;
-let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"]
+let numberOfRounds = 6;
+let opponents = ["Benny the Butcher", "Gerry the Greek", "Ronny the Ruler", "Thormorthur the Viking"];
+let gameNumber = 1;
+let now = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-  
   global.beginButton.addEventListener('click', event => {
-    if (global.inputField.value) {global.playerLabel.innerText = global.inputField.value};
+    if (global.inputField.value) { global.playerLabel.innerText = global.inputField.value };
     global.opponentLabel.innerText = opponents[Math.floor(Math.random() * 4)]
     global.gameBoard.style.display = "block";
     global.beginButton.style.display = "none";
     global.inputField.style.display = "none";
   });
 
-  global.rock.addEventListener('click', event => {
+  global.rock.addEventListener('click', clickRock);
+  global.paper.addEventListener('click', clickPaper);
+  global.scissor.addEventListener('click', clickScissor); 
+  
+  function clickRock() {
+    stopSpam(Date.now());
     let opponentChoice = getOpponentChoice();
-    result = getResult(0, opponentChoice);      
-  });
-
-  global.paper.addEventListener('click', event => {
+    getResult(0, opponentChoice);      
+  };
+  function clickPaper() {
+    stopSpam(Date.now());
     let opponentChoice = getOpponentChoice();
-    result = getResult(1, opponentChoice);     
-  });
-
-  global.scissor.addEventListener('click', event => {
+    getResult(1, opponentChoice);      
+  };
+  function clickScissor() {
+    stopSpam(Date.now());
     let opponentChoice = getOpponentChoice();
-    result = getResult(2, opponentChoice);     
-  });
+    getResult(2, opponentChoice);      
+  };
 
-  function getResult(playerChoice, opponentChoice) {    
+  function getResult(playerChoice, opponentChoice) {
+        
     let result = global.resultMatrix[opponentChoice][playerChoice];
     if (result === "win") {
+      
       playerScore += 1;
       global.playerScore.innerText = playerScore;
     } else if (result === "lose") {
       opponentScore += 1;
       global.opponentScore.innerText = opponentScore;
+    } else {
+
     }
     
-    setTimeout(clearOpView, 1600);     
+    setTimeout(clearOpView, 1400);     
   }
 
   function clearOpView() {
@@ -88,16 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function endGame() {
     let winnerText = winner();
-    wait(1000);
+    
     global.game.style.display = "none";
     global.endGame.style.display= "block";
     global.resultText.innerText = winnerText;    
-    global.roundCount = 0;
-    global.roundCountLabel.innerText = 0;
+    global.roundCount = 1;
+    global.roundCountLabel.innerText = 1;
     opponentScore = 0;
     playerScore = 0;
     global.opponentScore.innerText = 0;
     global.playerScore.innerText = 0;
+    addToGameLogger(winnerText);
   }
 
   global.yesButton.addEventListener('click', () => {
@@ -111,14 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
     global.gameBoard.style.display = "none";
     global.beginButton.style.display = "block";
     global.inputField.style.display = "block";
-
+    gameNumber = 1;
+    while (global.gameLogger.firstChild) {
+      global.gameLogger.removeChild(global.gameLogger.firstChild);
+    };
+    global.gameLogger.style.display = "none";
   })
 
   function winner() {
     if (playerScore > opponentScore) {
-      return `${global.inputField.value} won!`
+      return `Winner: ${global.playerLabel.innerText}`
     } else if (opponentScore > playerScore) {
-      return `${global.opponentLabel.innerText} won :(.` 
+      return `Winner: ${global.opponentLabel.innerText}.` 
     } else {
       return "The game ended in a tie."
     }
@@ -129,7 +145,29 @@ document.addEventListener('DOMContentLoaded', () => {
     var end = start;
     while(end < start + ms) {
       end = new Date().getTime();
-   }
- }
+    }
+  }
 
+  function stopSpam(now) {
+    if (Date.now() < now + 1000) { 
+      global.rock.removeEventListener('click', clickRock);
+      global.paper.removeEventListener('click', clickPaper);
+      global.scissor.removeEventListener('click', clickScissor);
+     };
+     setTimeout(reAddHandlers, 1000);     
+  }
+  
+  function reAddHandlers() {
+    global.rock.addEventListener('click', clickRock);
+    global.paper.addEventListener('click', clickPaper);
+    global.scissor.addEventListener('click', clickScissor);
+  }
+
+  function addToGameLogger(message) {
+    global.gameLogger.style.display = "block";
+    let node = document.createElement("div");
+    global.gameLogger.appendChild(node);
+    node.innerText = `Game${gameNumber} - ${message}`;
+    gameNumber += 1;
+  }
 });

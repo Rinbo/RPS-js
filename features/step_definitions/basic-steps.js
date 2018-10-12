@@ -12,8 +12,8 @@ When('I click {string}', async function(string) {
   return await this.clickOnButton(string)
 })
 
-Then('I fill in {string} with {string}', async function(field, content) {
-  return await this.fillFormField(field.toLowerCase(), content)
+Then('I fill in input-field with {string}', async function(content) {
+  return await this.fillFormField(content)
 })
 
 After(async function(){

@@ -6,7 +6,7 @@ Feature: Start game
 
   Scenario: Start game
     Given I visit the site
-    When I fill in "name" with "Robin"
+    When I fill in input-field with "Robin"
     And I click "begin"    
     Then I should see "Rock"
     And I should see "Scissor"

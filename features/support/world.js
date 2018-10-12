@@ -27,8 +27,8 @@ class RPSWorld {
           }, btnName);  
   }
 
-  async fillFormField(field, content) {
-      const inputSelector = `#game-${field}`
+  async fillFormField(content) {
+      const inputSelector = "#input-field"
       await this.page.waitForSelector(inputSelector)
       this.inputElement = await this.page.$(inputSelector)
       await this.inputElement.type(content)          
